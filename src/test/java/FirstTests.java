@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.lang.module.Configuration;
+import static com.codeborne.selenide.Configuration.browser;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -10,12 +10,17 @@ public class FirstTests {
 
     @Test
     void selenideSearchTest() {
-        // Configuration.browser = "FIREFOX";
 
-        open ("https://google.com");
+        browser = "firefox";
+            // Configuration.timeout = 10000;
+            // Configuration.baseUrl = "https://www.example.com";
+            // Configuration.headless = true;
+            // Configuration.browserSize = "1920x1080";
 
-        $( "[name=q]").setValue ("Selenide").pressEnter();
+        open("https://www.google.com");
 
-        $( "[id=search]").shouldHave (text("selenide.org"));
+        $("[name=q]").setValue("Selenide").pressEnter();
+
+        $("[id=search]").shouldHave(text("selenide.org"));
     }
 }
